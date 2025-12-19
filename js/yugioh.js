@@ -1,0 +1,1 @@
+import { TCG_CONFIG } from "./config";
