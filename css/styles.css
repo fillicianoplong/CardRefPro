@@ -26,3 +26,11 @@ nav a {
 nav a:hover {
     color: #ffca28;
 }
+
+/* Card grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    gap: 20px;
+    padding: 0px;
+}
