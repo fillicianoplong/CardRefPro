@@ -1,0 +1,28 @@
+/* Page */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #333333;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Navigation bar links */
+nav a {
+    color: white;
+    text-decoration: none; /* Removes the underline */
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+/* Navigation bar links hovered */
+nav a:hover {
+    color: #ffca28;
+}
