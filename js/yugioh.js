@@ -1,5 +1,9 @@
 import { TCG_CONFIG } from "./config.js";
 
+let cards = [];
+let currentPage = 1
+const cardsPerPage = TCG_CONFIG.yugioh.itemsPerPage;
+
 export async function getCards() {
     try {
         const url = TCG_CONFIG.yugioh.baseUrl;
@@ -13,10 +17,16 @@ export async function getCards() {
     }
 }
 
-function displayCards(cards) {
+function renderPage(page) {
     const grid = document.getElementById("card-grid");
+    grid.innerHTML = "";
 
-    cards.forEach(card => {
+    const start = (page - 1) * cardsPerPage;
+    const end = start + cardsPerPage;
+
+    const cardsToDisplay = cards.slice(start, end);
+
+    cardsToDisplay.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
         cardElement.innerHTML = `
@@ -27,11 +37,8 @@ function displayCards(cards) {
 }
 
 async function init() {
-    const cards = await getCards(); 
-    
-    if (cards) {
-        displayCards(cards); 
-    }
+    cards = await getCards(); 
+    renderPage(currentPage);
 }
 
 init();
