@@ -70,3 +70,12 @@ input[type="button"] {
 input[type="button"]:hover {
     background-color:#ebebeb;
 }
+
+/* Select dropdown */
+select, select:focus {
+    width: auto;
+    height: 35px;
+    background-color:#ffffff;
+    border: 1px, solid, #333333;
+    outline: none;
+}
