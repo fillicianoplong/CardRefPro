@@ -25,7 +25,7 @@ function displayCards(cards) {
         const cardElement = document.createElement('div');
         cardElement.className = 'card';
         cardElement.innerHTML = `
-            <img src="${card.card_images[0].image_url}" alt="${card.name}">
+            <img src="${card.card_images[0].image_url_small}" alt="${card.name}">
         `;
         grid.appendChild(cardElement);
     });
@@ -41,6 +41,31 @@ function renderPage(page) {
     const cardsToDisplay = cards.slice(start, end);
 
     displayCards(cardsToDisplay);
+    updateURL(page);
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setupSystemListeners() {
+    const nextBtn = document.getElementById('next-btn');
+    nextBtn.addEventListener('click', nextPage);
+
+    const prevBtn = document.getElementById('prev-btn');
+    prevBtn.addEventListener('click', prevPage);
+}
+
+function nextPage() {
+    if(currentPage < getPageTotal()) {
+        currentPage += 1;
+        renderPage(currentPage);
+    }
+}
+
+function prevPage() {
+    if(currentPage > 1) {
+        currentPage -= 1;
+        renderPage(currentPage);
+    }
 }
 
 function updateURL(page) {
@@ -54,14 +79,15 @@ function getPageFromURL() {
     return parseInt(params.get('page')) || 1;
 }
 
-function getPageTotal(data) {
-    return Math.ceil(data.length/cardsPerPage);
+function getPageTotal() {
+    return Math.ceil(cards.length/cardsPerPage);
 }
 
 async function init() {
     cards = await getCards();
     updateURL(currentPage);
     renderPage(currentPage);
+    setupSystemListeners();
 }
 
 init();
