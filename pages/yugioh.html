@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/index.js"></script>
+    <script type="module" src="../js/yugioh.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <title>Yu-Gi-Oh!</title>
 </head>
@@ -13,5 +13,16 @@
         <a href="yugioh.html">Yu-Gi-Oh!</a>
         <a href="about.html">About</a>
     </nav>
+    <div id="card-grid" class="grid-container">
+        <!--Injection-->
+    </div>
+    <div class="pagination-container">
+        <input type="button" value="&laquo;" id="prev-btn">
+        <select id="page-dropdown">
+            <!--Injection-->
+        </select>
+        <input type="button" value="&raquo;" id="next-btn">
+    </div>
+    
 </body>
 </html>

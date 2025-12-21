@@ -1,22 +1,23 @@
 /* Page */
 body {
-    font-family: sans-serif;
-    line-height: 1.6;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1;
     margin: 0;
     padding: 20px;
 }
 
 /* Navigation bar */
 nav {
-    background-color: #333333;
-    padding: 1rem;
-    border-radius: 8px;
+    background-color: #ffffff;
+    display: flex;
     margin-bottom: 20px;
+    border-radius: 3px;
 }
 
 /* Navigation bar links */
 nav a {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none; /* Removes the underline */
     margin-right: 15px;
     font-weight: bold;
@@ -24,5 +25,69 @@ nav a {
 
 /* Navigation bar links hovered */
 nav a:hover {
-    color: #ffca28;
+    color: #555555;
+}
+
+/* Card grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    gap: 20px;
+    padding: 0px;
+}
+
+/* Card default */
+.card img {
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+/* Card hover */
+.card img:hover {
+    transform: scale(1.05);
+    outline: 2px, solid, #ff0000
+}
+
+/* Navigation container */
+.pagination-container {
+    width: 100%;
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Navigation buttons */
+input[type="button"] {
+    width: 35px;
+    height: 35px;
+    color: #000000;
+    background-color:#ffffff;
+    border: 1px, solid, #000000;
+    outline: none;
+}
+
+/* Navigation buttons hovered */
+input[type="button"]:hover {
+    background-color:#ebebeb;
+}
+
+/* Select dropdown */
+select, select:focus {
+    width: 40px;
+    height: 35px;
+    color: #000000;
+    background-color:#ffffff;
+    border: 1px, solid, #000000;
+    outline: none;
+    text-align: center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select:hover {
+    background-color:#ebebeb;
 }
