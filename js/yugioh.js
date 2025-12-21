@@ -42,7 +42,7 @@ function renderPage(page) {
 
     displayCards(cardsToDisplay);
     updateURL(page);
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -52,6 +52,9 @@ function setupSystemListeners() {
 
     const prevBtn = document.getElementById('prev-btn');
     prevBtn.addEventListener('click', prevPage);
+
+    const pageDropdown = document.getElementById('page-dropdown');
+    pageDropdown.addEventListener('change', goToPage);
 }
 
 function nextPage() {
@@ -66,6 +69,25 @@ function prevPage() {
         currentPage -= 1;
         renderPage(currentPage);
     }
+}
+
+function goToPage() {
+    const pageDropdown = document.getElementById('page-dropdown');
+    renderPage(pageDropdown.value);
+}
+
+function setupPageDropdown() {
+    let pageDropdown = document.getElementById("page-dropdown");
+    for(let i = 1; i <= getPageTotal(); i++) {
+        pageDropdown.appendChild(createPageOption(i));
+    }
+}
+
+function createPageOption(value) {
+    let option = document.createElement('option');
+    option.value = value;
+    option.textContent = value;
+    return option;
 }
 
 function updateURL(page) {
@@ -87,6 +109,7 @@ async function init() {
     cards = await getCards();
     updateURL(currentPage);
     renderPage(currentPage);
+    setupPageDropdown();
     setupSystemListeners();
 }
 
