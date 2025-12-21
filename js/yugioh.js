@@ -47,6 +47,10 @@ function getPageFromURL() {
     return parseInt(params.get('page')) || 1;
 }
 
+function getPageTotal(data) {
+    return Math.ceil(data.length/cardsPerPage);
+}
+
 async function init() {
     cards = await getCards();
     updateURL(currentPage);
