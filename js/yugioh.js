@@ -37,16 +37,20 @@ function renderPage(page) {
 
     const start = (page - 1) * cardsPerPage;
     const end = start + cardsPerPage;
-
     const cardsToDisplay = cards.slice(start, end);
 
     displayCards(cardsToDisplay);
-    updateURL(page);
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function setupSystemListeners() {
+    window.addEventListener('popstate', () => {
+        currentPage = getPageFromURL();
+        renderPage(currentPage);
+        updatePageDropdown();
+    })
+
     const nextBtn = document.getElementById('next-btn');
     nextBtn.addEventListener('click', nextPage);
 
@@ -60,6 +64,8 @@ function setupSystemListeners() {
 function nextPage() {
     if(currentPage < getPageTotal()) {
         currentPage += 1;
+        updateURL(currentPage);
+        updatePageDropdown();
         renderPage(currentPage);
     }
 }
@@ -67,13 +73,21 @@ function nextPage() {
 function prevPage() {
     if(currentPage > 1) {
         currentPage -= 1;
+        updateURL(currentPage);
+        updatePageDropdown();
         renderPage(currentPage);
     }
 }
 
 function goToPage() {
-    const pageDropdown = document.getElementById('page-dropdown');
-    renderPage(pageDropdown.value);
+    currentPage = parseInt(document.getElementById('page-dropdown').value);
+    updateURL(currentPage);
+    updatePageDropdown();
+    renderPage(currentPage);
+}
+
+function updatePageDropdown() {
+    document.getElementById('page-dropdown').value = currentPage;
 }
 
 function setupPageDropdown() {
@@ -107,10 +121,14 @@ function getPageTotal() {
 
 async function init() {
     cards = await getCards();
-    updateURL(currentPage);
-    renderPage(currentPage);
+    currentPage = getPageFromURL();
+
     setupPageDropdown();
     setupSystemListeners();
+    
+    updatePageDropdown();
+    
+    renderPage(currentPage);
 }
 
 init();
