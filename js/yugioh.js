@@ -42,6 +42,11 @@ function updateURL(page) {
     window.history.pushState({}, '', url);
 }
 
+function getPageFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return parseInt(params.get('page')) || 1;
+}
+
 async function init() {
     cards = await getCards();
     updateURL(currentPage);
