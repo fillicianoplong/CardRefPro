@@ -36,8 +36,15 @@ function renderPage(page) {
     });
 }
 
+function updateURL(page) {
+    const url = new URL(window.location);
+    url.searchParams.set('page', page);
+    window.history.pushState({}, '', url);
+}
+
 async function init() {
-    cards = await getCards(); 
+    cards = await getCards();
+    updateURL(currentPage);
     renderPage(currentPage);
 }
 
