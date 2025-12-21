@@ -74,9 +74,17 @@ input[type="button"]:hover {
 
 /* Select dropdown */
 select, select:focus {
-    width: auto;
+    width: 40px;
     height: 35px;
     background-color:#ffffff;
     border: 1px, solid, #333333;
     outline: none;
+    text-align: center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select:hover {
+    background-color:#ebebeb;
 }
