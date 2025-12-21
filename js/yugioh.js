@@ -121,7 +121,9 @@ function getPageTotal() {
 
 async function init() {
     cards = await getCards();
+    
     currentPage = getPageFromURL();
+    updateURL(currentPage);
 
     setupPageDropdown();
     setupSystemListeners();
