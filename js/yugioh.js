@@ -17,6 +17,20 @@ export async function getCards() {
     }
 }
 
+function displayCards(cards) {
+    const grid = document.getElementById("card-grid");
+    grid.innerHTML = "";
+
+    cards.forEach(card => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'card';
+        cardElement.innerHTML = `
+            <img src="${card.card_images[0].image_url}" alt="${card.name}">
+        `;
+        grid.appendChild(cardElement);
+    });
+}
+
 function renderPage(page) {
     const grid = document.getElementById("card-grid");
     grid.innerHTML = "";
@@ -26,14 +40,7 @@ function renderPage(page) {
 
     const cardsToDisplay = cards.slice(start, end);
 
-    cardsToDisplay.forEach(card => {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card';
-        cardElement.innerHTML = `
-            <img src="${card.card_images[0].image_url}" alt="${card.name}">
-        `;
-        grid.appendChild(cardElement);
-    });
+    displayCards(cardsToDisplay);
 }
 
 function updateURL(page) {
