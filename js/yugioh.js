@@ -3,17 +3,26 @@ import { TCG_CONFIG } from "./config.js";
 let cards = [];
 let currentPage = 1
 const cardsPerPage = TCG_CONFIG.yugioh.itemsPerPage;
+const url = TCG_CONFIG.yugioh.baseUrl;
 
-export async function getCards() {
+export async function getData() {
     try {
-        const url = TCG_CONFIG.yugioh.baseUrl;
         console.log("Fetching from: ", url);
         const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+
         const data = await response.json();
+
+        if (!data || !data.data) {
+            throw new Error("Error: Invalid data structure received");
+        }
+        
         return data.data;
     }
     catch (error) {
-        console.error("Error fetching cards: ", error);
+        console.error("Error: ", error);
     }
 }
 
@@ -120,7 +129,7 @@ function getPageTotal() {
 }
 
 async function init() {
-    cards = await getCards();
+    cards = await getData();
     
     currentPage = getPageFromURL();
     updateURL(currentPage);
