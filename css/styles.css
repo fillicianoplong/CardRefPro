@@ -5,6 +5,9 @@ body {
     line-height: 1;
     margin: 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header */
@@ -126,4 +129,73 @@ select, select:focus {
 /* Select dropdown hovered */
 select:hover {
     background-color:#ebebeb;
+<<<<<<< HEAD
+=======
+}
+
+/* Under construction section */
+.under-construction {
+    text-align: center;
+    width: 100%;
+    padding: 40px 0;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* Under construction image */
+.under-construction-image {
+    width: 100px;
+}
+
+/* Under construction text */
+.under-construction h2 {
+    margin-top: 15px;
+    color: #333333;
+}
+
+/* About section */
+.about-section {
+    width: 50%;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    padding: 40px 40px;
+    margin: 0 auto 20px auto;
+    border-radius: 3px;
+    color: #222222;
+}
+
+.about-section h1 {
+    color: #111111;
+    font-size: 26px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.about-section h2 {
+    color: #222222;
+    font-size: 18px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.about-section p {
+    color: #333333;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.about-section ul {
+    color: #333333;
+    line-height: 1.8;
+    margin-left: 20px;
+    margin-bottom: 12px;
+>>>>>>> bdfc792 (Updated styling of the under construction section)
 }
