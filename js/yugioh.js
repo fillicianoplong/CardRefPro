@@ -1,6 +1,7 @@
 import { TCG_CONFIG } from "./config.js";
 
-let cards = [];
+let allData = [];
+let filteredData = [];
 let currentPage = 1
 const cardsPerPage = TCG_CONFIG.yugioh.itemsPerPage;
 const url = TCG_CONFIG.yugioh.baseUrl;
@@ -26,6 +27,20 @@ export async function getData() {
     }
 }
 
+function applyFilters() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+    filteredData = allData.filter(card => {
+        const searchMatches = card.name.toLowerCase().includes(searchTerm);
+
+        return searchMatches;
+    });
+
+    updateURL(1);
+    updatePageDropdown();
+    renderPage(1);
+}
+
 function displayCards(cards) {
     const grid = document.getElementById("card-grid");
     grid.innerHTML = "";
@@ -44,9 +59,11 @@ function renderPage(page) {
     const grid = document.getElementById("card-grid");
     grid.innerHTML = "";
 
+    console.log(filteredData.length);
+
     const start = (page - 1) * cardsPerPage;
     const end = start + cardsPerPage;
-    const cardsToDisplay = cards.slice(start, end);
+    const cardsToDisplay = filteredData.slice(start, end);
 
     displayCards(cardsToDisplay);
 
@@ -59,6 +76,13 @@ function setupSystemListeners() {
         renderPage(currentPage);
         updatePageDropdown();
     })
+
+    const searchInput = document.getElementById('search-input');
+    if(searchInput) {
+        searchInput.addEventListener('input', () => {
+            applyFilters();
+        });
+    }
 
     const nextBtn = document.getElementById('next-btn');
     nextBtn.addEventListener('click', nextPage);
@@ -125,20 +149,19 @@ function getPageFromURL() {
 }
 
 function getPageTotal() {
-    return Math.ceil(cards.length/cardsPerPage);
+    return Math.ceil(filteredData.length/cardsPerPage);
 }
 
 async function init() {
-    cards = await getData();
+    allData = await getData();
+    filteredData = [...allData];
     
     currentPage = getPageFromURL();
-    updateURL(currentPage);
 
+    updateURL(currentPage);
     setupPageDropdown();
     setupSystemListeners();
-    
     updatePageDropdown();
-    
     renderPage(currentPage);
 }
 

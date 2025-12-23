@@ -7,6 +7,41 @@ body {
     padding: 20px;
 }
 
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Search input */
+input[type="text"], input[type="text"]:focus {
+    width: 200px;
+    height: 20px;
+    color: #000000;
+    background-color:#ffffff;
+    border: 1px, solid, #000000;
+    outline: none;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+/* Search button */
+#search-btn {
+    width: auto;
+    height: 20px;
+    color: #000000;
+    background-color:#ffffff;
+    border: 1px, solid, #000000;
+    outline: none;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+/* Search button hovered */
+#search-btn:hover {
+    background-color:#ebebeb;
+}
+
 /* Navigation bar */
 nav {
     background-color: #ffffff;
@@ -88,6 +123,7 @@ select, select:focus {
     appearance: none;
 }
 
+/* Select dropdown hovered */
 select:hover {
     background-color:#ebebeb;
 }
