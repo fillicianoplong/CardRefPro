@@ -205,7 +205,7 @@ select:hover {
 .about-section ul {
     color: #333333;
     line-height: 1.8;
-    margin-left: 20px;
+    margin-left: 0px;
     margin-bottom: 12px;
 <<<<<<< HEAD
 >>>>>>> bdfc792 (Updated styling of the under construction section)
@@ -257,5 +257,13 @@ select:hover {
         padding: 20px;
         margin-top: 40px;
     }
+<<<<<<< HEAD
 >>>>>>> 5e8bf41 (Added styling for mobile)
+=======
+
+    /* Reduce bullet indent on mobile */
+    .about-section ul {
+        margin-left: 0px;
+    }
+>>>>>>> 5d5a42e (Reduced bullet point indentation)
 }
