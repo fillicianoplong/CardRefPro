@@ -1,4 +1,4 @@
-/* Page */
+/* Body */
 body {
     font-family: monospace;
     font-size: 16px;
@@ -195,4 +195,50 @@ select:hover {
     line-height: 1.8;
     margin-left: 20px;
     margin-bottom: 12px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Header mobile styling */
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Search container mobile styling */
+    .search-container {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Search input mobile styling */
+    input[type="text"] {
+        flex: 1;
+        width: auto;
+    }
+
+    /* Grid container mobile styling */
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    /* Body padding for mobile */
+    body {
+        padding: 20px;
+    }
+
+    /* Navigation bar margin for mobile */
+    nav {
+        margin-bottom: 0px;
+    }
+
+    /* About section mobile styling */
+    .about-section {
+        width: 100%;
+        padding: 20px;
+        margin-top: 20px;
+    }
 }
