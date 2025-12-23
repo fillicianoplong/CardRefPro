@@ -121,10 +121,13 @@ function goToPage() {
 
 function updatePageDropdown() {
     document.getElementById('page-dropdown').value = currentPage;
+    setupPageDropdown();
 }
 
 function setupPageDropdown() {
     let pageDropdown = document.getElementById("page-dropdown");
+    pageDropdown.replaceChildren();
+    
     for(let i = 1; i <= getPageTotal(); i++) {
         pageDropdown.appendChild(createPageOption(i));
     }
