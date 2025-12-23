@@ -89,13 +89,42 @@ nav a:hover {
     width: 100%;
     border-radius: 3px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
+    transition: transform 0.05s;
 }
 
 /* Card hover */
 .card img:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
     outline: 2px, solid, #ff0000
+}
+
+/* Card modal overlay */
+.card-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* Card modal */
+.card-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card modal image */
+.card-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 /* Navigation container */

@@ -51,8 +51,35 @@ function displayCards(cards) {
         cardElement.innerHTML = `
             <img src="${card.card_images[0].image_url_small}" alt="${card.name}">
         `;
+        cardElement.addEventListener('click', () => {
+            displayCardModal(card.card_images[0].image_url, card.name);
+        });
         grid.appendChild(cardElement);
     });
+}
+
+function displayCardModal(imageUrl, cardName) {
+    if (document.querySelector('.card-modal-overlay')) return;
+
+    const initOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'card-modal-overlay';
+    document.body.appendChild(overlay);
+
+    const modal = document.createElement('div');
+    modal.className = 'card-modal';
+    modal.innerHTML = `<img src="${imageUrl}" alt="${cardName}">`;
+    document.body.appendChild(modal);
+
+    overlay.addEventListener('click', closeCardModal);
+
+    function closeCardModal() {
+        overlay.remove();
+        modal.remove();
+        document.body.style.overflow = initOverflow || '';
+    }
 }
 
 function renderPage(page) {
