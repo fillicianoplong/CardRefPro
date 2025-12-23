@@ -203,7 +203,7 @@ select:hover {
 .about-section ul {
     color: #333333;
     line-height: 1.8;
-    margin-left: 20px;
+    margin-left: 0px;
     margin-bottom: 12px;
 }
 
@@ -251,5 +251,10 @@ select:hover {
         width: 100%;
         padding: 20px;
         margin-top: 40px;
+    }
+
+    /* Reduce bullet indent on mobile */
+    .about-section ul {
+        margin-left: 0px;
     }
 }
