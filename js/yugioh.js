@@ -35,10 +35,11 @@ function applyFilters() {
 
         return searchMatches;
     });
-
-    updateURL(1);
+    currentPage = 1;
+    updateURL(currentPage);
+    setupPageDropdown();
     updatePageDropdown();
-    renderPage(1);
+    renderPage(currentPage);
 }
 
 function displayCards(cards) {
@@ -121,7 +122,6 @@ function goToPage() {
 
 function updatePageDropdown() {
     document.getElementById('page-dropdown').value = currentPage;
-    setupPageDropdown();
 }
 
 function setupPageDropdown() {
