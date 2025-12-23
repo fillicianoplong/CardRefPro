@@ -5,6 +5,9 @@ body {
     line-height: 1;
     margin: 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header */
@@ -134,9 +137,14 @@ select:hover {
     width: 100%;
     padding: 40px 0;
     margin-bottom: 20px;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border-radius: 3px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 /* Under construction image */
