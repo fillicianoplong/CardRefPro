@@ -127,3 +127,25 @@ select, select:focus {
 select:hover {
     background-color:#ebebeb;
 }
+
+/* Under construction section */
+.under-construction {
+    text-align: center;
+    width: 100%;
+    padding: 40px 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Under construction image */
+.under-construction-image {
+    width: 100px;
+}
+
+/* Under construction text */
+.under-construction h2 {
+    margin-top: 15px;
+    color: #333333;
+}
