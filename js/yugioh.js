@@ -66,6 +66,8 @@ function displayCards(cards) {
         cardElement.addEventListener('click', () => {
             displayCardModal(card.card_images[0].image_url, card.name);
         });
+
+        // Append card element to grid
         grid.appendChild(cardElement);
     });
 }
@@ -92,6 +94,7 @@ function displayCardModal(imageUrl, cardName) {
     // Add click handler to close modal
     overlay.addEventListener('click', closeCardModal);
 
+    // Function to close the modal
     function closeCardModal() {
         overlay.remove();
         modal.remove();
@@ -103,8 +106,6 @@ function renderPage(page) {
     // Renders the specified page of filtered cards
     const grid = document.getElementById("card-grid");
     grid.innerHTML = "";
-
-    console.log(filteredData.length);
 
     // Calculate pagination indices
     const start = (page - 1) * cardsPerPage;
