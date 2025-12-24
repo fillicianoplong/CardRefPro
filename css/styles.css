@@ -143,7 +143,8 @@ nav a:hover {
     height: 40px;
     color: #000000;
     background-color:#ffffff;
-    border: none;
+    border-style: none;
+    border-right: 1px solid #cccccc;
     outline: none;
     margin: 0;
     z-index: 1003;
@@ -158,14 +159,15 @@ nav a:hover {
 .card-modal-nav-btn:first-child {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    border: none;
+    border-style: none;
+    border-right: 1px solid #cccccc;
 }
 
 /* Card modal right button */
 .card-modal-nav-btn:last-child {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    border: none;
+    border-style: none;
 }
 
 /* Navigation container */
