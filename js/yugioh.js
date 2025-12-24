@@ -106,7 +106,14 @@ function displayCardModal(imageUrl, cardName) {
     // Create and append modal with image
     const modal = document.createElement('div');
     modal.className = 'card-modal';
-    modal.innerHTML = `<img src="${imageUrl}" alt="${cardName}">`;
+    modal.innerHTML = `
+        <img src="${imageUrl}" alt="${cardName}">
+        <div class="card-modal-nav">
+            <button class="card-modal-nav-btn" id="prev-btn">Previous</button>
+            <button class="card-modal-nav-btn" id="close-btn">Close</button>
+            <button class="card-modal-nav-btn" id="next-btn">Next</button>
+        </div>
+    `;
     document.body.appendChild(modal);
 
     // Add click handler to close modal
@@ -116,6 +123,7 @@ function displayCardModal(imageUrl, cardName) {
     function closeCardModal() {
         overlay.remove();
         modal.remove();
+        navButtons.remove();
         document.body.style.overflow = initOverflow || '';
     }
 }
