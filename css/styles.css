@@ -259,7 +259,7 @@ select[id="page-dropdown"]:hover {
         display: flex;
         gap: 8px;
         width: 100%;
-        margin-bottom: 20px;
+        margin: 10px 0px 20px 0px;
     }
 
     /* Search input mobile styling */
@@ -272,7 +272,7 @@ select[id="page-dropdown"]:hover {
     .grid-container {
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
-        margin-top: 70px;
+        margin-top: 80px;
     }
 
     /* Body padding for mobile */
