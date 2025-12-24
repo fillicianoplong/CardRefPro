@@ -105,6 +105,13 @@ nav a:hover {
     background: rgba(0, 0, 0, 0.85);
     z-index: 1000;
     cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Card modal overlay focus */
+.card-modal-overlay:focus {
+    outline: none;
 }
 
 /* Card modal */
