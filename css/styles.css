@@ -98,6 +98,87 @@ nav a:hover {
     outline: 2px, solid, #ff0000
 }
 
+<<<<<<< HEAD
+=======
+/* Card modal overlay */
+.card-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Card modal overlay focus */
+.card-modal-overlay:focus {
+    outline: none;
+}
+
+/* Card modal */
+.card-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Card modal image */
+.card-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Card modal navigation */
+.card-modal-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1002;
+}
+
+/* Card modal navigation buttons */
+.card-modal-nav-btn {
+    width: 100%;
+    height: 40px;
+    color: #000000;
+    background-color:#ffffff;
+    border-style: none;
+    border-right: 1px solid #cccccc;
+    outline: none;
+    margin: 0;
+}
+
+/* Card modal navigation buttons active */
+.card-modal-nav-btn:active {
+    background-color:#d4d4d4;
+}
+
+/* Card modal left button */
+.card-modal-nav-btn:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-style: none;
+    border-right: 1px solid #cccccc;
+}
+
+/* Card modal right button */
+.card-modal-nav-btn:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-style: none;
+}
+
+>>>>>>> 29e54e8 (Increased card view size)
 /* Navigation container */
 .pagination-container {
     width: 100%;
