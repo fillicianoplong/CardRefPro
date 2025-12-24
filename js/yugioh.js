@@ -10,7 +10,6 @@ export async function getData() {
     // Fetches Yu-Gi-Oh card data from the API
     try {
         // Fetch data from the API
-        console.log("Fetching from: ", url);
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
@@ -128,7 +127,6 @@ function displayCardModal(imageUrl, cardName) {
     // Add event listener for navigation buttons
     navButtons.addEventListener('click', function(e) {
         if (e.target.id === 'prev-btn') {
-            console.log("Previous card clicked");
             if(currentIndex > 0) {
                 currentIndex--;
                 const prevCard = filteredData[currentIndex];
@@ -136,7 +134,6 @@ function displayCardModal(imageUrl, cardName) {
                 img.alt = prevCard.name;
             }
         } else if (e.target.id === 'next-btn') {
-            console.log("Next card clicked");
             if(currentIndex < filteredData.length - 1) {
                 currentIndex++;
                 const nextCard = filteredData[currentIndex];
@@ -144,7 +141,6 @@ function displayCardModal(imageUrl, cardName) {
                 img.alt = nextCard.name;
             }
         } else if (e.target.id === 'close-btn') {
-            console.log("Close button clicked");
             overlay.remove();
             modal.remove();
             navButtons.remove();
