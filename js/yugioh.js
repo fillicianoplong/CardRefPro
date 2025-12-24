@@ -107,7 +107,7 @@ function displayCardModal(imageUrl, cardName) {
     const modal = document.createElement('div');
     modal.className = 'card-modal';
     modal.innerHTML = `
-        <img src="${imageUrl}" alt="${cardName}">
+        <img src="${imageUrl}" alt="${cardName}" id="modal-image">
         <div class="card-modal-nav">
             <button class="card-modal-nav-btn" id="prev-btn">Previous</button>
             <button class="card-modal-nav-btn" id="close-btn">Close</button>
@@ -116,16 +116,41 @@ function displayCardModal(imageUrl, cardName) {
     `;
     document.body.appendChild(modal);
 
-    // Add click handler to close modal
-    overlay.addEventListener('click', closeCardModal);
+    // Navigation button event handling
+    const navButtons = document.querySelector('.card-modal-nav');
 
-    // Function to close the modal
-    function closeCardModal() {
-        overlay.remove();
-        modal.remove();
-        navButtons.remove();
-        document.body.style.overflow = initOverflow || '';
-    }
+    // Find the index of the current card in filteredData
+    let currentIndex = filteredData.findIndex(card => card.card_images[0].image_url === imageUrl);
+
+    // Get reference to the modal image element
+    const img = modal.querySelector('#modal-image');
+
+    // Add event listener for navigation buttons
+    navButtons.addEventListener('click', function(e) {
+        if (e.target.id === 'prev-btn') {
+            console.log("Previous card clicked");
+            if(currentIndex > 0) {
+                currentIndex--;
+                const prevCard = filteredData[currentIndex];
+                img.src = prevCard.card_images[0].image_url;
+                img.alt = prevCard.name;
+            }
+        } else if (e.target.id === 'next-btn') {
+            console.log("Next card clicked");
+            if(currentIndex < filteredData.length - 1) {
+                currentIndex++;
+                const nextCard = filteredData[currentIndex];
+                img.src = nextCard.card_images[0].image_url;
+                img.alt = nextCard.name;
+            }
+        } else if (e.target.id === 'close-btn') {
+            console.log("Close button clicked");
+            overlay.remove();
+            modal.remove();
+            navButtons.remove();
+            document.body.style.overflow = initOverflow || '';
+        }
+    });
 }
 
 function renderPage(page) {

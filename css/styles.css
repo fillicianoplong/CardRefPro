@@ -146,6 +146,12 @@ nav a:hover {
     border: none;
     outline: none;
     margin: 0;
+    z-index: 1003;
+}
+
+/* Card modal navigation buttons active */
+.card-modal-nav-btn:active {
+    background-color:#d4d4d4;
 }
 
 /* Card modal left button */
