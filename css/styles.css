@@ -340,6 +340,20 @@ select[id="page-dropdown"]:hover {
         width: 100%;
         padding: 20px;
         margin-top: 40px;
+        font-size: 14px;
+    }
+
+    .about-section h1 {
+        font-size: 20px;
+    }
+
+    .about-section h2 {
+        font-size: 15px;
+    }
+
+    .about-section p,
+    .about-section ul {
+        font-size: 13px;
     }
 
     /* Reduce bullet indent on mobile */
