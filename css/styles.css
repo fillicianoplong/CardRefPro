@@ -125,13 +125,13 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 /* Card modal image */
 .card-modal img {
-    max-width: 80vw;
-    max-height: 80vh;
+    max-width: 90vw;
+    max-height: 90vh;
     border-radius: 8px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
@@ -154,7 +154,6 @@ nav a:hover {
     border-right: 1px solid #cccccc;
     outline: none;
     margin: 0;
-    z-index: 1003;
 }
 
 /* Card modal navigation buttons active */
