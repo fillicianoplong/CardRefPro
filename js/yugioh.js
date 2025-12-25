@@ -35,9 +35,27 @@ function applyFilters() {
     // Applies search filters to the card data based on user input
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
 
+    // Apply search type filter if applicable
+    const searchType = document.getElementById('search-type').value;
+
     // Filter cards based on search term
     filteredData = allData.filter(card => {
-        const searchMatches = card.name.toLowerCase().includes(searchTerm);
+        if (searchType === "name") {
+            const searchMatches = card.name && card.name.toLowerCase().includes(searchTerm);
+            return searchMatches;
+        } else if (searchType === "desc") {
+            const searchMatches = card.desc && card.desc.toLowerCase().includes(searchTerm);
+            return searchMatches;
+        } else if (searchType === "type") { 
+            const searchMatches = card.type && card.type.toLowerCase().includes(searchTerm);
+            return searchMatches;
+        } else if (searchType === "attribute") {
+            const searchMatches = card.attribute && card.attribute.toLowerCase().includes(searchTerm);
+            return searchMatches;
+        } else if (searchType === "race") {
+            const searchMatches = card.race && card.race.toLowerCase().includes(searchTerm);
+            return searchMatches;
+        }
 
         return searchMatches;
     });
@@ -142,6 +160,11 @@ function setupSystemListeners() {
     const prevBtn = document.getElementById('prev-btn');
     prevBtn.addEventListener('click', prevPage);
 
+    // Search type listener
+    const searchType = document.getElementById('search-type');  
+    addEventListener('change', updatePlaceholder);
+    
+
     // Page dropdown listener
     const pageDropdown = document.getElementById('page-dropdown');
     pageDropdown.addEventListener('change', goToPage);
@@ -173,6 +196,24 @@ function goToPage() {
     updateURL(currentPage);
     updatePageDropdown();
     renderPage(currentPage);
+}
+
+function updatePlaceholder() {
+    // Updates the search input placeholder based on the selected search type
+    const searchType = document.getElementById('search-type').value;
+    const searchInput = document.getElementById('search-input');
+
+    if(searchType === 'name') {
+        searchInput.placeholder = 'Search by name...';
+    } else if(searchType === 'desc') {
+        searchInput.placeholder = 'Search by description...';
+    } else if(searchType === 'type') {
+        searchInput.placeholder = 'Search by type...';
+    } else if(searchType === 'race') {
+        searchInput.placeholder = 'Search by race...';
+    } else if(searchType === 'attribute') {
+        searchInput.placeholder = 'Search by attribute...';
+    }
 }
 
 function updatePageDropdown() {
@@ -229,6 +270,7 @@ async function init() {
     updateURL(currentPage);
     setupPageDropdown();
     setupSystemListeners();
+    updatePlaceholder();
     updatePageDropdown();
     renderPage(currentPage);
 }

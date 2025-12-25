@@ -15,8 +15,14 @@
             <a href="about.html">About</a>
         </nav>
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search for a card...">
-            <button id="search-btn">Search</button>
+            <select id="search-type">
+                <option value="name" selected>Name</option>
+                <option value="desc">Description</option>
+                <option value="type">Type</option>
+                <option value="race">Race</option>
+                <option value="attribute">Attribute</option>
+            </select>
+            <input type="text" id="search-input" placeholder="">
         </div>
     </div>
     <div id="card-grid" class="grid-container">
@@ -29,6 +35,5 @@
         </select>
         <input type="button" value="&raquo;" id="next-btn">
     </div>
-    
 </body>
 </html>
