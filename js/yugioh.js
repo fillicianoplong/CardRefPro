@@ -35,10 +35,11 @@ function applyFilters() {
 
         return searchMatches;
     });
-
-    updateURL(1);
+    currentPage = 1;
+    updateURL(currentPage);
+    setupPageDropdown();
     updatePageDropdown();
-    renderPage(1);
+    renderPage(currentPage);
 }
 
 function displayCards(cards) {
@@ -125,6 +126,8 @@ function updatePageDropdown() {
 
 function setupPageDropdown() {
     let pageDropdown = document.getElementById("page-dropdown");
+    pageDropdown.replaceChildren();
+    
     for(let i = 1; i <= getPageTotal(); i++) {
         pageDropdown.appendChild(createPageOption(i));
     }
