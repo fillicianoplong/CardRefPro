@@ -10,7 +10,6 @@ export async function getData() {
     // Fetches Yu-Gi-Oh card data from the API
     try {
         // Fetch data from the API
-        console.log("Fetching from: ", url);
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
@@ -106,18 +105,48 @@ function displayCardModal(imageUrl, cardName) {
     // Create and append modal with image
     const modal = document.createElement('div');
     modal.className = 'card-modal';
-    modal.innerHTML = `<img src="${imageUrl}" alt="${cardName}">`;
+    modal.innerHTML = `
+        <img src="${imageUrl}" alt="${cardName}" id="modal-image">
+        <div class="card-modal-nav">
+            <button class="card-modal-nav-btn" id="prev-btn">Previous</button>
+            <button class="card-modal-nav-btn" id="close-btn">Close</button>
+            <button class="card-modal-nav-btn" id="next-btn">Next</button>
+        </div>
+    `;
     document.body.appendChild(modal);
 
-    // Add click handler to close modal
-    overlay.addEventListener('click', closeCardModal);
+    // Navigation button event handling
+    const navButtons = document.querySelector('.card-modal-nav');
 
-    // Function to close the modal
-    function closeCardModal() {
-        overlay.remove();
-        modal.remove();
-        document.body.style.overflow = initOverflow || '';
-    }
+    // Find the index of the current card in filteredData
+    let currentIndex = filteredData.findIndex(card => card.card_images[0].image_url === imageUrl);
+
+    // Get reference to the modal image element
+    const img = modal.querySelector('#modal-image');
+
+    // Add event listener for navigation buttons
+    navButtons.addEventListener('click', function(e) {
+        if (e.target.id === 'prev-btn') {
+            if(currentIndex > 0) {
+                currentIndex--;
+                const prevCard = filteredData[currentIndex];
+                img.src = prevCard.card_images[0].image_url;
+                img.alt = prevCard.name;
+            }
+        } else if (e.target.id === 'next-btn') {
+            if(currentIndex < filteredData.length - 1) {
+                currentIndex++;
+                const nextCard = filteredData[currentIndex];
+                img.src = nextCard.card_images[0].image_url;
+                img.alt = nextCard.name;
+            }
+        } else if (e.target.id === 'close-btn') {
+            overlay.remove();
+            modal.remove();
+            navButtons.remove();
+            document.body.style.overflow = initOverflow || '';
+        }
+    });
 }
 
 function renderPage(page) {
