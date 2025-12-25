@@ -47,7 +47,7 @@ function applyFilters() {
     updateURL(currentPage);
     setupPageDropdown();
     updatePageDropdown();
-    renderPage(1);
+    renderPage(currentPage);
 }
 
 function displayCards(cards) {
@@ -182,6 +182,8 @@ function updatePageDropdown() {
 function setupPageDropdown() {
     // Populates the page dropdown with all available page numbers
     let pageDropdown = document.getElementById("page-dropdown");
+    pageDropdown.replaceChildren();
+    
     for(let i = 1; i <= getPageTotal(); i++) {
         pageDropdown.appendChild(createPageOption(i));
     }
